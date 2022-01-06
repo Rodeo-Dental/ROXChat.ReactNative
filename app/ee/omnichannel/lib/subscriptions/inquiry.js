@@ -1,17 +1,11 @@
 import log from '../../../../utils/log';
 import store from '../../../../lib/createStore';
 import RocketChat from '../../../../lib/rocketchat';
-import {
-	inquiryRequest,
-	inquiryQueueAdd,
-	inquiryQueueUpdate,
-	inquiryQueueRemove
-} from '../../actions/inquiry';
+import { inquiryQueueAdd, inquiryQueueRemove, inquiryQueueUpdate, inquiryRequest } from '../../actions/inquiry';
 
 const removeListener = listener => listener.stop();
 
 let connectedListener;
-let disconnectedListener;
 let queueListener;
 
 const streamTopic = 'stream-livechat-inquiry-queue-observer';
@@ -21,7 +15,7 @@ export default function subscribeInquiry() {
 		store.dispatch(inquiryRequest());
 	};
 
-	const handleQueueMessageReceived = (ddpMessage) => {
+	const handleQueueMessageReceived = ddpMessage => {
 		const [{ type, ...sub }] = ddpMessage.fields.args;
 
 		// added can be ignored, since it is handled by 'changed' event
@@ -53,10 +47,6 @@ export default function subscribeInquiry() {
 			connectedListener.then(removeListener);
 			connectedListener = false;
 		}
-		if (disconnectedListener) {
-			disconnectedListener.then(removeListener);
-			disconnectedListener = false;
-		}
 		if (queueListener) {
 			queueListener.then(removeListener);
 			queueListener = false;
@@ -64,12 +54,11 @@ export default function subscribeInquiry() {
 	};
 
 	connectedListener = RocketChat.onStreamData('connected', handleConnection);
-	disconnectedListener = RocketChat.onStreamData('close', handleConnection);
 	queueListener = RocketChat.onStreamData(streamTopic, handleQueueMessageReceived);
 
 	try {
 		const { user } = store.getState().login;
-		RocketChat.getAgentDepartments(user.id).then((result) => {
+		RocketChat.getAgentDepartments(user.id).then(result => {
 			if (result.success) {
 				const { departments } = result;
 
@@ -78,9 +67,9 @@ export default function subscribeInquiry() {
 				}
 
 				const departmentIds = departments.map(({ departmentId }) => departmentId);
-				departmentIds.forEach((departmentId) => {
+				departmentIds.forEach(departmentId => {
 					// subscribe to all departments of the agent
-					RocketChat.subscribe(streamTopic, `department/${ departmentId }`).catch(e => console.log(e));
+					RocketChat.subscribe(streamTopic, `department/${departmentId}`).catch(e => console.log(e));
 				});
 			}
 		});

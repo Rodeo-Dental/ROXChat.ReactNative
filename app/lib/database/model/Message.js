@@ -1,7 +1,5 @@
 import { Model } from '@nozbe/watermelondb';
-import {
-	field, relation, date, json
-} from '@nozbe/watermelondb/decorators';
+import { date, field, json, relation } from '@nozbe/watermelondb/decorators';
 
 import { sanitizer } from '../utils';
 
@@ -12,7 +10,7 @@ export default class Message extends Model {
 
 	static associations = {
 		subscriptions: { type: 'belongs_to', key: 'rid' }
-	}
+	};
 
 	@field('msg') msg;
 
@@ -83,4 +81,6 @@ export default class Message extends Model {
 	@field('e2e') e2e;
 
 	@field('tshow') tshow;
+
+	@json('md', sanitizer) md;
 }
