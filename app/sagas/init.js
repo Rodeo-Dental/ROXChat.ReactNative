@@ -1,6 +1,6 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
 import RNBootSplash from 'react-native-bootsplash';
-
+import roxLabsStore from '../../roxLabsStore';
 import UserPreferences from '../lib/userPreferences';
 import { selectServerRequest, serverRequest } from '../actions/server';
 import { setAllPreferences } from '../actions/sortPreferences';
@@ -19,13 +19,13 @@ export const initLocalSettings = function* initLocalSettings() {
 };
 
 const restore = function* restore() {
+	const server = yield roxLabsStore.getStringAsync('rlServerURL');
 	try {
-		const { server } = appConfig;
 		const userId = yield UserPreferences.getStringAsync(`${RocketChat.TOKEN_KEY}-${server}`);
 
 		if (!userId) {
 			yield all([UserPreferences.removeItem(RocketChat.TOKEN_KEY), UserPreferences.removeItem(RocketChat.CURRENT_SERVER)]);
-			yield put(serverRequest(appConfig.server));
+			yield put(serverRequest(server));
 			yield put(appStart({ root: ROOT_OUTSIDE }));
 		} else {
 			const serversDB = database.servers;
