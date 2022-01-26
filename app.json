@@ -2,7 +2,7 @@
   "name": "RocketChatRN",
   "share": "ShareRocketChatRN",
   "displayName": "ROXChat",
-  "server": "https://roxchatapp.roxlabs.tech",
+  "server": "https://ios-042302.roxchatgateway.roxlabs.tech",
   "appGroup": "group.rox.chat",
   "appStoreID": "1603293032"
 }
