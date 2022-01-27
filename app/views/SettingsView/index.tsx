@@ -29,6 +29,7 @@ import SafeAreaView from '../../containers/SafeAreaView';
 import database from '../../lib/database';
 import { isFDroidBuild } from '../../constants/environment';
 import { getUserSelector } from '../../selectors/login';
+import OTAVersionAndChannel from '../../../OTAVersionAndChannel';
 
 interface ISettingsViewProps {
 	navigation: StackNavigationProp<SettingsStackParamList, 'SettingsView'>;
@@ -178,6 +179,10 @@ class SettingsView extends React.Component<ISettingsViewProps, any> {
 
 	render() {
 		const { server, isMasterDetail, theme } = this.props;
+		// @ts-ignore
+		// @ts-ignore
+		// @ts-ignore
+		// @ts-ignore
 		return (
 			<SafeAreaView testID='settings-view'>
 				<StatusBar />
@@ -256,7 +261,9 @@ class SettingsView extends React.Component<ISettingsViewProps, any> {
 						<List.Item title='License' onPress={this.onPressLicense} showActionIndicator testID='settings-view-license' />
 						<List.Separator />
 						<List.Item
-							title={I18n.t('Version_no', { version: getReadableVersion })}
+							// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+							// @ts-ignore
+							title={<OTAVersionAndChannel />}
 							onPress={this.copyAppVersion}
 							testID='settings-view-version'
 							translateTitle={false}

@@ -5,6 +5,7 @@ import { themes } from '../constants/colors';
 import sharedStyles from '../views/Styles';
 import I18n from '../i18n';
 import OTAVersion from '../../OTAVersion';
+import OTAChannel from '../../OTAChannel';
 
 const styles = StyleSheet.create({
 	container: {
@@ -25,7 +26,7 @@ const AppVersion = React.memo(({ theme }: { theme: string }) => (
 		<Text style={[styles.text, { color: themes[theme].auxiliaryText }]}>
 			{I18n.t('Version_no', { version: '' })}
 			<Text style={styles.bold}>
-				<OTAVersion />
+				<OTAVersion />: <OTAChannel />
 			</Text>
 		</Text>
 	</View>
