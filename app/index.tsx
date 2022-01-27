@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { KeyCommandsEmitter } from 'react-native-keycommands';
 import RNScreens from 'react-native-screens';
 import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
+import codePush from 'react-native-code-push';
 
 import { defaultTheme, newThemeState, subscribeTheme, unsubscribeTheme } from './utils/theme';
 import UserPreferences from './lib/userPreferences';
@@ -74,7 +75,7 @@ const parseDeepLinking = (url: string) => {
 	return null;
 };
 
-export default class Root extends React.Component<{}, IState> {
+class Root extends React.Component<{}, IState> {
 	private listenerTimeout!: any;
 
 	private onKeyCommands: any;
@@ -86,6 +87,7 @@ export default class Root extends React.Component<{}, IState> {
 			this.initCrashReport();
 		}
 		const { width, height, scale, fontScale } = Dimensions.get('window');
+		// @ts-ignore
 		this.state = {
 			theme: defaultTheme(),
 			themePreferences: {
@@ -240,3 +242,4 @@ export default class Root extends React.Component<{}, IState> {
 		);
 	}
 }
+export default codePush(Root);
