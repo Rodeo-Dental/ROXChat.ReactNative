@@ -84,6 +84,9 @@
 		7A3268F724F04FFE0050E241 /* custom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A3268F524F04FFE0050E241 /* custom.ttf */; };
 		7ACD4897222860DE00442C55 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACD4853222860DE00442C55 /* JavaScriptCore.framework */; };
 		83F99820D542132F15E51371 /* libPods-defaults-RocketChatRN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88665EE8B2B6F34580EEF27D /* libPods-defaults-RocketChatRN.a */; };
+		B732A4A427A34E7B00E5F5EA /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B732A4A327A34E7B00E5F5EA /* AppCenter-Config.plist */; };
+		B732A4A527A34E7B00E5F5EA /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B732A4A327A34E7B00E5F5EA /* AppCenter-Config.plist */; };
+		B732A4A627A34E7B00E5F5EA /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B732A4A327A34E7B00E5F5EA /* AppCenter-Config.plist */; };
 		B774295127A1C947006AC02C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B774295027A1C947006AC02C /* GoogleService-Info.plist */; };
 		B774295227A1C947006AC02C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B774295027A1C947006AC02C /* GoogleService-Info.plist */; };
 		B774295327A1C947006AC02C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B774295027A1C947006AC02C /* GoogleService-Info.plist */; };
@@ -195,6 +198,7 @@
 		9747EA64783AAAD1486EC3CC /* libPods-defaults-ShareRocketChatRN.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-defaults-ShareRocketChatRN.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		977A37B323E7A8A7EC0B01EF /* Pods-defaults-NotificationService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-NotificationService.debug.xcconfig"; path = "Target Support Files/Pods-defaults-NotificationService/Pods-defaults-NotificationService.debug.xcconfig"; sourceTree = "<group>"; };
 		B37C79D9BD0742CE936B6982 /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		B732A4A327A34E7B00E5F5EA /* AppCenter-Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppCenter-Config.plist"; sourceTree = "<group>"; };
 		B774295027A1C947006AC02C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9D2BCED708759575760AFDE /* Pods-defaults-ShareRocketChatRN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-ShareRocketChatRN.debug.xcconfig"; path = "Target Support Files/Pods-defaults-ShareRocketChatRN/Pods-defaults-ShareRocketChatRN.debug.xcconfig"; sourceTree = "<group>"; };
 		BA7E862283664608B3894E34 /* libWatermelonDB.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libWatermelonDB.a; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				B732A4A327A34E7B00E5F5EA /* AppCenter-Config.plist */,
 				1E76CBC425152A7F0067298C /* Shared */,
 				1E068CFB24FD2DAF00A0FFC1 /* AppGroup */,
 				13B07FAE1A68108700A75B9A /* RocketChatRN */,
@@ -600,6 +605,7 @@
 				B774295127A1C947006AC02C /* GoogleService-Info.plist in Resources */,
 				7A14FCED257FEB3A005BDCD4 /* Experimental.xcassets in Resources */,
 				7A0D62D2242AB187006D5C06 /* LaunchScreen.storyboard in Resources */,
+				B732A4A427A34E7B00E5F5EA /* AppCenter-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A3268F724F04FFE0050E241 /* custom.ttf in Resources */,
+				B732A4A527A34E7B00E5F5EA /* AppCenter-Config.plist in Resources */,
 				1EC6ACB722CB9FC300A41C61 /* MainInterface.storyboard in Resources */,
 				B774295227A1C947006AC02C /* GoogleService-Info.plist in Resources */,
 			);
@@ -618,6 +625,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B774295327A1C947006AC02C /* GoogleService-Info.plist in Resources */,
+				B732A4A627A34E7B00E5F5EA /* AppCenter-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,7 +1081,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 5J497Z83T9;
 				ENABLE_BITCODE = NO;
@@ -1129,7 +1137,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 5J497Z83T9;
 				ENABLE_BITCODE = NO;
