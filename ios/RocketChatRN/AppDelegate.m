@@ -22,7 +22,8 @@
 #import <UMReactNativeAdapter/UMNativeModulesProxy.h>
 #import <UMReactNativeAdapter/UMModuleRegistryAdapter.h>
 #import <MMKV/MMKV.h>
-
+#import <CodePush/CodePush.h>
+#import <React/RCTLog.h>
 #if DEBUG
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -45,6 +46,7 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+   RCTSetLogThreshold(RCTLogLevelInfo);
    #if DEBUG
      InitializeFlipper(application);
    #endif
@@ -66,11 +68,11 @@ static void InitializeFlipper(UIApplication *application) {
     [self.window makeKeyAndVisible];
     [RNNotifications startMonitorNotifications];
     [ReplyNotification configure];
-  
+
     // AppGroup MMKV
     NSString *groupDir = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"AppGroup"]].path;
     [MMKV initializeMMKV:nil groupDir:groupDir logLevel:MMKVLogNone];
-  
+
     [RNBootSplash initWithStoryboard:@"LaunchScreen" rootView:rootView];
 
     return YES;
@@ -89,7 +91,7 @@ static void InitializeFlipper(UIApplication *application) {
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  return [CodePush bundleURL];
 #endif
 }
 

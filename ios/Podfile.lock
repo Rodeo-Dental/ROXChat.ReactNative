@@ -1,8 +1,14 @@
 PODS:
+  - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
   - BugsnagReactNative (7.10.5):
     - React-Core
   - CocoaAsyncSocket (7.6.5)
+  - CodePush (7.0.4):
+    - Base64 (~> 1.1)
+    - JWT (~> 3.0.0-beta.12)
+    - React-Core
+    - SSZipArchive (~> 2.2.2)
   - DoubleConversion (1.1.6)
   - EXAppleAuthentication (3.2.1):
     - UMCore
@@ -164,6 +170,8 @@ PODS:
   - GoogleUtilities/UserDefaults (6.7.1):
     - GoogleUtilities/Logger
   - JitsiMeetSDK (3.6.0)
+  - JWT (3.0.0-beta.14):
+    - Base64 (~> 1.1.2)
   - KeyCommands (2.0.3):
     - React
   - libevent (2.1.12)
@@ -573,6 +581,7 @@ PODS:
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.5)
   - simdjson (0.9.6-fix2)
+  - SSZipArchive (2.2.3)
   - TOCropViewController (2.5.3)
   - UMAppLoader (2.2.0)
   - UMCore (7.1.2)
@@ -591,6 +600,7 @@ PODS:
 
 DEPENDENCIES:
   - "BugsnagReactNative (from `../node_modules/@bugsnag/react-native`)"
+  - CodePush (from `../node_modules/react-native-code-push`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXAppleAuthentication (from `../node_modules/expo-apple-authentication/ios`)
   - EXAV (from `../node_modules/expo-av/ios`)
@@ -701,6 +711,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Base64
     - boost-for-react-native
     - CocoaAsyncSocket
     - Firebase
@@ -720,6 +731,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
+    - JWT
     - libevent
     - libwebp
     - MMKV
@@ -729,12 +741,15 @@ SPEC REPOS:
     - PromisesObjC
     - SDWebImage
     - SDWebImageWebPCoder
+    - SSZipArchive
     - TOCropViewController
     - YogaKit
 
 EXTERNAL SOURCES:
   BugsnagReactNative:
     :path: "../node_modules/@bugsnag/react-native"
+  CodePush:
+    :path: "../node_modules/react-native-code-push"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXAppleAuthentication:
@@ -914,9 +929,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/RocketChat/jitsi-meet-ios-sdk-releases.git
 
 SPEC CHECKSUMS:
+  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BugsnagReactNative: a97b3132c1854fd7bf92350fabd505e3ebdd7829
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
+  CodePush: b51b7ac64c07d4eacfc8cc5750a1dd28adbf2528
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   EXAppleAuthentication: e8c537fcbe80670dd76fde7a07acb94af70ada00
   EXAV: 67bcc1d0afeb1fab854b206c84b9f2afbd61d0cd
@@ -950,6 +967,7 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: 489c1265d2c85b68187a83a911913d190012158d
   GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
   JitsiMeetSDK: 476329f72a866f714d2802bafe1729de6d644ccf
+  JWT: ef71dfb03e1f842081e64dc42eef0e164f35d251
   KeyCommands: f66c535f698ed14b3d3a4e58859d79a827ea907e
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
@@ -1023,6 +1041,7 @@ SPEC CHECKSUMS:
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   SDWebImageWebPCoder: 36f8f47bd9879a8aea6044765c1351120fd8e3a8
   simdjson: 85016870cd17207312b718ef6652eb6a1cd6a2b0
+  SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   TOCropViewController: 20a14b6a7a098308bf369e7c8d700dc983a974e6
   UMAppLoader: 21af63390e55c82e037fb9752d93114a80ecf16e
   UMCore: ce3a4faa010239063b8343895b29a6d97b01069d

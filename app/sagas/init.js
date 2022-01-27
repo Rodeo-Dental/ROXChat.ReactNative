@@ -1,6 +1,7 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
 import RNBootSplash from 'react-native-bootsplash';
 
+import codePush from 'react-native-code-push';
 import UserPreferences from '../lib/userPreferences';
 import { selectServerRequest, serverRequest } from '../actions/server';
 import { setAllPreferences } from '../actions/sortPreferences';
@@ -76,5 +77,37 @@ const root = function* root() {
 	yield takeLatest(APP.INIT, restore);
 	yield takeLatest(APP.START, start);
 	yield takeLatest(APP.INIT_LOCAL_SETTINGS, initLocalSettings);
+	// ROXLABS OTA
+	let channel = appConfig.activeChannel;
+	let otaKey = appConfig.stagingKey;
+	if (channel !== 'prod' || channel == null) {
+		channel = 'stage';
+	}
+	if (channel === 'prod') {
+		otaKey = appConfig.productionKey;
+	}
+	codePush.sync({ deploymentKey: otaKey });
+	// Download the update silently, but install it on
+	// the next resume, as long as at least 5 minutes
+	// has passed since the app was put into the background.
+	codePush.sync({ installMode: codePush.InstallMode.ON_NEXT_RESUME, minimumBackgroundDuration: 60 * 5 });
+
+	// Download the update silently, and install optional updates
+	// on the next restart, but install mandatory updates on the next resume.
+	codePush.sync({ mandatoryInstallMode: codePush.InstallMode.ON_NEXT_RESUME });
+
+	// Changing the title displayed in the
+	// confirmation dialog of an "active" update
+	codePush.sync({ updateDialog: { title: 'An update is available!' } });
+
+	// Displaying an update prompt which includes the
+	// description for the CodePush release
+	codePush.sync({
+		updateDialog: {
+			appendReleaseDescription: true,
+			descriptionPrefix: '\n\nChange log:\n'
+		},
+		installMode: codePush.InstallMode.IMMEDIATE
+	});
 };
 export default root;
