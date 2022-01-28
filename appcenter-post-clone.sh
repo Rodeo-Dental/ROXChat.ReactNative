@@ -5,6 +5,4 @@
 yarn
 
 # pod install
-cd ios
-
-pod install
+npx pod-install
