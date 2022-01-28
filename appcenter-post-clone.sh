@@ -3,6 +3,7 @@
 
 # yarn
 yarn
-
+#cd ios
+cd ios
 # pod install
-npx pod-install
+pod install
