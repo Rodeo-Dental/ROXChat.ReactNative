@@ -80,19 +80,16 @@ const root = function* root() {
 	yield takeLatest(APP.INIT_LOCAL_SETTINGS, initLocalSettings);
 	// ROXLABS OTA
 	const channel = appConfig.activeChannel;
-	const currentPlatform = Platform.OS;
-	console.log(currentPlatform);
-
-	if ((currentPlatform === 'ios') & (channel === 'stage')) {
+	if ((Platform.OS === 'ios') & (channel === 'stage')) {
 		codePush.sync({ deploymentKey: appConfig.iOSStagingKey });
 	}
-	if ((currentPlatform === 'ios') & (channel === 'prod')) {
+	if ((Platform.OS === 'ios') & (channel === 'prod')) {
 		codePush.sync({ deploymentKey: appConfig.iOSProductionKey });
 	}
-	if ((currentPlatform === 'android') & (channel === 'stage')) {
+	if ((Platform.OS === 'android') & (channel === 'stage')) {
 		codePush.sync({ deploymentKey: appConfig.AndroidStagingKey });
 	}
-	if ((currentPlatform === 'android') & (channel === 'prod')) {
+	if ((Platform.OS === 'android') & (channel === 'prod')) {
 		codePush.sync({ deploymentKey: appConfig.AndroidProductionKey });
 	}
 	// Download the update silently, but install it on
