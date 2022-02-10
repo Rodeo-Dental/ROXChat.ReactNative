@@ -80,17 +80,16 @@ const root = function* root() {
 	yield takeLatest(APP.INIT_LOCAL_SETTINGS, initLocalSettings);
 	// ROXLABS OTA
 	const channel = appConfig.activeChannel;
-	if ((Platform.OS === 'ios') & (channel === 'stage')) {
+	if (Platform.OS === 'ios' && channel === 'stage') {
 		codePush.sync({ deploymentKey: appConfig.iOSStagingKey });
-	}
-	if ((Platform.OS === 'ios') & (channel === 'prod')) {
+	} else if (Platform.OS === 'ios' && channel === 'prod') {
 		codePush.sync({ deploymentKey: appConfig.iOSProductionKey });
-	}
-	if ((Platform.OS === 'android') & (channel === 'stage')) {
+	} else if (Platform.OS === 'android' && channel === 'stage') {
 		codePush.sync({ deploymentKey: appConfig.AndroidStagingKey });
-	}
-	if ((Platform.OS === 'android') & (channel === 'prod')) {
+	} else if (Platform.OS === 'android' && channel === 'prod') {
 		codePush.sync({ deploymentKey: appConfig.AndroidProductionKey });
+	} else {
+		codePush.sync({ deploymentKey: appConfig.AndroidStagingKey });
 	}
 	// Download the update silently, but install it on
 	// the next resume, as long as at least 5 minutes
