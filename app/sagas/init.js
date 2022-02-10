@@ -81,21 +81,20 @@ const root = function* root() {
 	// ROXLABS OTA
 	const channel = appConfig.activeChannel;
 	const currentPlatform = Platform.OS;
-	let otaKey;
+	console.log(currentPlatform);
+
 	if ((currentPlatform === 'ios') & (channel === 'stage')) {
-		let otaKey = appConfig.iOSStagingKey;
+		codePush.sync({ deploymentKey: appConfig.iOSStagingKey });
 	}
 	if ((currentPlatform === 'ios') & (channel === 'prod')) {
-		let otaKey = appConfig.iOSProductionKey;
+		codePush.sync({ deploymentKey: appConfig.iOSProductionKey });
 	}
 	if ((currentPlatform === 'android') & (channel === 'stage')) {
-		let otaKey = appConfig.AndroidStagingKey;
+		codePush.sync({ deploymentKey: appConfig.AndroidStagingKey });
 	}
 	if ((currentPlatform === 'android') & (channel === 'prod')) {
-		let otaKey = appConfig.AndroidProductionKey;
+		codePush.sync({ deploymentKey: appConfig.AndroidProductionKey });
 	}
-
-	codePush.sync({ deploymentKey: otaKey });
 	// Download the update silently, but install it on
 	// the next resume, as long as at least 5 minutes
 	// has passed since the app was put into the background.
