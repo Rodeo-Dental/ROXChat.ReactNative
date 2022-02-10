@@ -1,6 +1,7 @@
+/* eslint-disable prefer-const */
 import { put, takeLatest, all } from 'redux-saga/effects';
 import RNBootSplash from 'react-native-bootsplash';
-
+import { Platform } from 'react-native';
 import codePush from 'react-native-code-push';
 import UserPreferences from '../lib/userPreferences';
 import { selectServerRequest, serverRequest } from '../actions/server';
@@ -78,14 +79,22 @@ const root = function* root() {
 	yield takeLatest(APP.START, start);
 	yield takeLatest(APP.INIT_LOCAL_SETTINGS, initLocalSettings);
 	// ROXLABS OTA
-	let channel = appConfig.activeChannel;
-	let otaKey = appConfig.stagingKey;
-	if (channel !== 'prod' || channel == null) {
-		channel = 'stage';
+	const channel = appConfig.activeChannel;
+	const currentPlatform = Platform.OS;
+	let otaKey;
+	if ((currentPlatform === 'ios') & (channel === 'stage')) {
+		let otaKey = appConfig.iOSStagingKey;
 	}
-	if (channel === 'prod') {
-		otaKey = appConfig.productionKey;
+	if ((currentPlatform === 'ios') & (channel === 'prod')) {
+		let otaKey = appConfig.iOSProductionKey;
 	}
+	if ((currentPlatform === 'android') & (channel === 'stage')) {
+		let otaKey = appConfig.AndroidStagingKey;
+	}
+	if ((currentPlatform === 'android') & (channel === 'prod')) {
+		let otaKey = appConfig.AndroidProductionKey;
+	}
+
 	codePush.sync({ deploymentKey: otaKey });
 	// Download the update silently, but install it on
 	// the next resume, as long as at least 5 minutes

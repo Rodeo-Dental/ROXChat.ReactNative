@@ -2,10 +2,12 @@
   "name": "RocketChatRN",
   "share": "ShareRocketChatRN",
   "displayName": "ROXChat",
-  "server": "https://roxchat.roxlabs.tech",
+  "server": "https://chatdev.roxlabs.tech",
   "appGroup": "group.rox.chat",
   "appStoreID": "1603293032",
-  "stagingKey": "OAeCjVItO44vrkbZcW-PmQSQiujS_PNRfWPAk",
-  "productionKey": "cVJEunmVj0Aq7lPrFgRBuLrkZ3MQRYOX8UVzu",
+  "iOSStagingKey": "OAeCjVItO44vrkbZcW-PmQSQiujS_PNRfWPAk",
+  "iOSProductionKey": "cVJEunmVj0Aq7lPrFgRBuLrkZ3MQRYOX8UVzu",
+  "AndroidStagingKey": "ihW50aP3OZShryspcoLi6bSpjz3x1qy8OHbDh",
+  "AndroidProductionKey": "ihW50aP3OZShryspcoLi6bSpjz3x1qy8OHbDh",
   "activeChannel": "stage"
 }

@@ -93,6 +93,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 apply from: '../../node_modules/react-native-unimodules/gradle.groovy'
 
 /**
@@ -325,3 +326,4 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 if (!isFoss) {
     apply plugin: 'com.google.gms.google-services'
 }
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
